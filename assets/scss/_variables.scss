@@ -1,0 +1,60 @@
+//
+
+$option-separator: '-';
+
+// GRID
+
+$breakpoints: (
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  'xxl': 1536px
+);
+
+$breakpoint-separator: \:;
+
+// TEXT ALIGNMENT
+
+$text: (
+  'left': left,
+  'right': right,
+  'center': center,
+  'justify': justify,
+);
+
+// SPACING
+
+$paddings: ();
+$margins: ('auto': auto);
+
+// DISPLAY
+
+$display: (
+  'block': block,
+  'inline-block': inline-block,
+  'inline': inline,
+  'flex': flex,
+  'inline-flex': inline-flex,
+  'grid': grid,
+  'inline-grid': inline-grid,
+  'hidden': none,
+);
+
+// FLEXBOX
+
+$justify-content: (
+  'justify-start': flex-start,
+  'justify-end': flex-end,
+  'justify-center': center,
+  'justify-space-between': space-between,
+  'justify-space-around': space-around,
+);
+
+$align-items: (
+  'align-items-start': flex-start,
+  'align-items-end': flex-end,
+  'align-items-center': center,
+  'align-items-baseline': baseline,
+  'align-items-stretch': stretch,
+);

@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// TEXT ALIGNMENT
+
+.text {
+  @include options($text) using ($value) {
+    text-align: $value;
+  }
+}
+
+// MARGIN AND PADDING SPACING
+
+$margins: populatespacingmap($margins);
+$paddings: populatespacingmap($paddings);
+
+.mt {
+  @include options($margins) using ($value) {
+    margin-top: $value;
+  }
+}
+
+.mb {
+  @include options($margins) using ($value) {
+    margin-bottom: $value;
+  }
+}
+
+.ml {
+  @include options($margins) using ($value) {
+    margin-left: $value;
+  }
+}
+
+.mr {
+  @include options($margins) using ($value) {
+    margin-right: $value;
+  }
+}
+
+.my {
+  @include options($margins) using ($value) {
+    margin-bottom: $value;
+    margin-top: $value;
+  }
+}
+
+.mx {
+  @include options($margins) using ($value) {
+    margin-left: $value;
+    margin-right: $value;
+  }
+}
+
+.ma {
+  @include options($margins) using ($value) {
+    margin: $value;
+  }
+}
+
+.pt {
+  @include options($paddings) using ($value) {
+    padding-top: $value;
+  }
+}
+
+.pb {
+  @include options($paddings) using ($value) {
+    padding-bottom: $value;
+  }
+}
+
+.pl {
+  @include options($paddings) using ($value) {
+    padding-left: $value;
+  }
+}
+
+.pr {
+  @include options($paddings) using ($value) {
+    padding-right: $value;
+  }
+}
+
+.py {
+  @include options($paddings) using ($value) {
+    padding-bottom: $value;
+    padding-top: $value;
+  }
+}
+
+.px {
+  @include options($paddings) using ($value) {
+    padding-left: $value;
+    padding-right: $value;
+  }
+}
+
+.pa {
+  @include options($paddings) using ($value) {
+    padding: $value;
+  }
+}
+
+// DISPLAY
+
+@include options($display) using ($value) {
+  display: $value;
+}
+
+
+// FLEXBOX
+
+@include options($justify-content) using ($value) {
+  justify-content: $value;
+}
+
+@include options($align-items) using ($value) {
+  align-items: $value;
+}

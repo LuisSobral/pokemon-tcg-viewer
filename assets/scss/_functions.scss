@@ -1,0 +1,9 @@
+// CREATE CLASSES FOR SPACING
+
+@function populatespacingmap($spacingmap: ()) {
+  @for $size from 0 through 16 {
+    $spacingmap: map-merge($spacingmap, ($size: $size*4px));
+  }
+
+  @return $spacingmap;
+}
