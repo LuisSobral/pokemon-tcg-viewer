@@ -1,4 +1,9 @@
 export default {
+  // Global private environment variables: https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-runtime-config
+  publicRuntimeConfig: {
+    apiKey: process.env.POKEMON_TCG_KEY || ''
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Pokémon TCG Viewer',
@@ -10,7 +15,8 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap' },
     ],
   },
 
@@ -18,7 +24,7 @@ export default {
   css: ['~/assets/scss/global.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/plugins/axios', '~/plugins/api'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -30,16 +36,28 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     // https://github.com/nuxt-community/style-resources-module
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    // https://github.com/Developmint/nuxt-purgecss
+    'nuxt-purgecss',
+    // https://github.com/nuxt-community/fontawesome-module
+    '@nuxtjs/fontawesome',
   ],
 
   // Style Resources module configuration: https://github.com/nuxt-community/style-resources-module
   styleResources: {
+    hoistUseStatements: true,
     scss: [
-      '~/assets/scss/_mixins.scss',
+      '~/assets/scss/_variables.scss',
       '~/assets/scss/_functions.scss',
-      '~/assets/scss/_variables.scss'
+      '~/assets/scss/_mixins.scss'
     ]
+  },
+
+  // Font Awesome module configuration: https://github.com/nuxt-community/fontawesome-module
+  fontawesome: {
+    icons: {
+      solid: ['faSearch', 'faLongArrowAltUp']
+    }
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -51,7 +69,9 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: 'https://api.pokemontcg.io/v2/'
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {

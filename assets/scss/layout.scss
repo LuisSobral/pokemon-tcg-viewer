@@ -1,0 +1,19 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:string';
+
+.grid {
+  display: grid;
+}
+
+.grid-gap {
+  gap: 12px;
+}
+
+$grid-columns: populatecolumns();
+
+.grid-columns {
+  @include options($grid-columns) using ($value) {
+    grid-template-columns: $value;
+  }
+}

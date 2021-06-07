@@ -1,6 +1,13 @@
-//
+// MIXINS USE
 
 $option-separator: '-';
+$breakpoint-separator: \:;
+$flex-columns-length: 12;
+
+// TYPOGRAPHY
+
+$title-font: 'Source Sans Pro', helvetica, sans-serif;
+$text-font: 'Raleway', helvetica, sans-serif;
 
 // GRID
 
@@ -11,8 +18,6 @@ $breakpoints: (
   'xl': 1280px,
   'xxl': 1536px
 );
-
-$breakpoint-separator: \:;
 
 // TEXT ALIGNMENT
 
@@ -28,25 +33,15 @@ $text: (
 $paddings: ();
 $margins: ('auto': auto);
 
-// DISPLAY
-
-$display: (
-  'block': block,
-  'inline-block': inline-block,
-  'inline': inline,
-  'flex': flex,
-  'inline-flex': inline-flex,
-  'grid': grid,
-  'inline-grid': inline-grid,
-  'hidden': none,
-);
-
 // FLEXBOX
+
+$flex-columns: ();
 
 $justify-content: (
   'justify-start': flex-start,
   'justify-end': flex-end,
   'justify-center': center,
+  'justify-evenly': space-evenly,
   'justify-space-between': space-between,
   'justify-space-around': space-around,
 );
@@ -57,4 +52,12 @@ $align-items: (
   'align-items-center': center,
   'align-items-baseline': baseline,
   'align-items-stretch': stretch,
+);
+
+// POSITIONS
+
+$positions: (
+  'fixed': fixed,
+  'absolute': absolute,
+  'relative': relative
 );

@@ -4,8 +4,8 @@
   @at-root {
     @each $breakpoint, $value in $breakpoints {
       @each $selector in & {
-        $selector: nth($selector, 1);
-        $selector: str-slice($selector, 2);
+        $selector: list.nth($selector, 1);
+        $selector: string.slice($selector, 2);
         $selector: '.#{$breakpoint}#{$breakpoint-separator}#{$selector}';
 
         #{$selector} {

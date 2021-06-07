@@ -1,9 +1,25 @@
 // CREATE CLASSES FOR SPACING
 
-@function populatespacingmap($spacingmap: ()) {
-  @for $size from 0 through 16 {
-    $spacingmap: map-merge($spacingmap, ($size: $size*4px));
+@function populatespacingmap($spacingmap: (), $is-negative: false) {
+  $initial: if($is-negative, 1, 0);
+  $prefix: if($is-negative, 'n', '');
+  $multiplier: if($is-negative, -4px, 4px);
+
+  @for $size from $initial through 16 {
+    $spacingmap: map.merge($spacingmap, ($prefix + $size: $size * $multiplier));
   }
 
   @return $spacingmap;
+}
+
+// CREATE CLASSES FOR FLEX COLUMNS
+
+@function populatecolumns() {
+  $columns: ();
+
+  @for $size from 1 through $flex-columns-length {
+    $columns: map.merge($columns, ($size: repeat($size, minmax(0, 1fr))));
+  }
+
+  @return $columns;
 }

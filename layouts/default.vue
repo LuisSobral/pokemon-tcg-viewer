@@ -1,9 +1,6 @@
 <template>
-  <div>
+  <section class="grid grid-columns-2">
     <TheHeader />
-
-    <main class="l-container">
-      <Nuxt />
-    </main>
-  </div>
+    <Nuxt />
+  </section>
 </template>

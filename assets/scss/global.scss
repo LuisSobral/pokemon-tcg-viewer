@@ -1,7 +1,25 @@
+@use 'sass:map';
+@use 'sass:list';
+@use 'sass:string';
+
+@import './layout';
+
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  font-family: $text-font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $title-font;
 }
 
 // TEXT ALIGNMENT
@@ -15,7 +33,12 @@
 // MARGIN AND PADDING SPACING
 
 $margins: populatespacingmap($margins);
-$paddings: populatespacingmap($paddings);
+$n-margins: populatespacingmap((), true);
+$margins: map.merge($margins, $n-margins);
+
+$paddings: populatespacingmap(());
+$n-paddings: populatespacingmap((), true);
+$paddings: map.merge($paddings, $n-paddings);
 
 .mt {
   @include options($margins) using ($value) {
@@ -105,14 +128,11 @@ $paddings: populatespacingmap($paddings);
   }
 }
 
-// DISPLAY
-
-@include options($display) using ($value) {
-  display: $value;
-}
-
-
 // FLEXBOX
+
+.flex {
+  display: flex;
+}
 
 @include options($justify-content) using ($value) {
   justify-content: $value;
@@ -120,4 +140,10 @@ $paddings: populatespacingmap($paddings);
 
 @include options($align-items) using ($value) {
   align-items: $value;
+}
+
+// POSITION
+
+@include options($positions) using ($value) {
+  position: $value;
 }
