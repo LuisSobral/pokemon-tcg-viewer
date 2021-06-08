@@ -63,7 +63,7 @@ export default class InformationCard extends Vue {
   grid-gap: 28px;
   max-height: 50%;
 
-  @media screen and (min-width: #{map-get($breakpoints, 'xl')}) {
+  @media screen and (min-width: #{map-get($breakpoints, 'md')}) {
     grid-column: auto;
   }
 
@@ -93,7 +93,12 @@ export default class InformationCard extends Vue {
 
   &__content h3 {
     font-family: $text-font;
+    font-size: 0.95rem;
     letter-spacing: 0.125em;
+
+    @media screen and (min-width: #{map-get($breakpoints, 'md')}) {
+      font-size: 1rem;
+    }
   }
 
   &__content__id {

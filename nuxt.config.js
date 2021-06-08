@@ -62,7 +62,7 @@ export default {
   // Font Awesome module configuration: https://github.com/nuxt-community/fontawesome-module
   fontawesome: {
     icons: {
-      solid: ['faSearch', 'faLongArrowAltUp'],
+      solid: ['faSearch', 'faLongArrowAltUp', 'faAngleLeft', 'faAngleRight'],
     },
   },
 

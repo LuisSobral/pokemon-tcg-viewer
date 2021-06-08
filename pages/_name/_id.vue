@@ -9,8 +9,8 @@
       xl:grid-columns-2
     "
   >
-    <div>
-      <LinkButton class="mb-4" text="Go Back" :to="localePath('/')" />
+    <div class="l-section__image md:flex md:mb-6">
+      <LinkButton class="l-section__link mb-4 md:mb-6" text="Go Back" :to="localePath('/')" />
       <img :src="card.images.large" :alt="card.name" />
     </div>
     <div class="px-6">
@@ -123,8 +123,20 @@ export default class IdPage extends Vue {
 }
 
 .l-section {
-  img {
+  &__image {
+    @media screen and (min-width: #{map-get($breakpoints, 'md')}) {
+      flex-direction: column;
+    }
+  }
+
+  &__image img {
     max-width: 100%;
+  }
+
+  &__link {
+    @media screen and (min-width: #{map-get($breakpoints, 'md')}) {
+      align-self: flex-start;
+    }
   }
 }
 

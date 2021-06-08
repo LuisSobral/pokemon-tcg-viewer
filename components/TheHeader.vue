@@ -12,7 +12,7 @@
 
 <template>
   <header
-    class="l-header flex justify-center align-items-center px-8 py-6 xl:px-0"
+    class="l-header flex justify-center align-items-center px-8 py-6 md:px-0"
   >
     <div class="text-left xl:text-right xl:py-0 xl:px-16 xl:mt-n16">
       <div class="xl:px-16">
@@ -100,6 +100,14 @@ export default class TheHeaderComponent extends Vue {
   background-size: 40rem auto;
   color: #fff;
 
+  @media screen and (min-width: #{map-get($breakpoints, 'sm')}) {
+    background-size: 50rem auto;
+  }
+
+  @media screen and (min-width: #{map-get($breakpoints, 'lg')}) {
+    background-size: 70rem auto;
+  }
+
   @media screen and (min-width: #{map-get($breakpoints, 'xl')}) {
     background-position: -50% 10%;
     background-size: 75% auto;
@@ -109,21 +117,33 @@ export default class TheHeaderComponent extends Vue {
     top: 0;
   }
 
+  > div {
+    max-width: 100%;
+  }
+
   &__title {
     font-family: $title-font;
-    font-size: 85px;
+    font-size: 60px;
     font-weight: 700;
     letter-spacing: -0.05em;
     line-height: 1.1;
+
+    @media screen and (min-width: #{map-get($breakpoints, 'md')}) {
+      font-size: 85px;
+    }
   }
 
   &__description {
     font-family: $text-font;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     font-weight: 300;
     letter-spacing: 0.175em;
     line-height: 2.5;
     text-transform: uppercase;
+
+    @media screen and (min-width: #{map-get($breakpoints, 'md')}) {
+      font-size: 0.8rem;
+    }
   }
 
   &__link {
@@ -157,13 +177,17 @@ export default class TheHeaderComponent extends Vue {
     right: 10px;
     top: 0;
 
+    @media screen and (min-width: #{map-get($breakpoints, 'md')}) {
+      right: 50px;
+    }
+
     @media screen and (min-width: #{map-get($breakpoints, 'xl')}) {
       right: 60px;
     }
   }
 
   &__button {
-    background-color: #f44336;
+    background-color: #554198;
     border: 0;
     border-radius: 100%;
     bottom: 25px;
