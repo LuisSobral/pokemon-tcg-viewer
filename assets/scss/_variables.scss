@@ -2,7 +2,8 @@
 
 $option-separator: '-';
 $breakpoint-separator: \:;
-$flex-columns-length: 12;
+$grid-columns-length: 12;
+$grid-rows-length: 6;
 
 // TYPOGRAPHY
 
@@ -34,8 +35,6 @@ $paddings: ();
 $margins: ('auto': auto);
 
 // FLEXBOX
-
-$flex-columns: ();
 
 $justify-content: (
   'justify-start': flex-start,

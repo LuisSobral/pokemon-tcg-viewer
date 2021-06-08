@@ -1,18 +1,53 @@
+<i18n locale="en">
+{
+  "title": "Pokémon TCG Viewer"
+}
+</i18n>
+
+<i18n locale="pt">
+ {
+  "title": "Visualizador de Pokémon TCG"
+ }
+</i18n>
+
 <template>
-  <header class="l-header flex justify-center align-items-center">
-    <div class="text-right px-16 mt-n16">
-      <h1 class="l-header__title px-16">Pokémon TCG Viewer</h1>
-      <p class="l-header__description px-16">A viewer of all Pokémon TCG cards, using the <a class="l-header__link" href="https://pokemontcg.io">pokemontcg.io</a> API!</p>
-      <div class="relative">
-        <input v-model="name" type="text" placeholder="Search by name" class="l-header__input mt-10" @keyup.enter="searchName()" />
+  <header
+    class="l-header flex justify-center align-items-center px-8 py-6 xl:px-0"
+  >
+    <div class="text-left xl:text-right xl:py-0 xl:px-16 xl:mt-n16">
+      <div class="xl:px-16">
+        <LinkButton text="EN" :to="switchLocalePath('en')" />
+        |
+        <LinkButton text="PT" :to="switchLocalePath('pt')" />
+      </div>
+      <h1 class="l-header__title xl:px-16">
+        {{ $t('title') }}
+      </h1>
+      <p class="l-header__description xl:px-16">
+        A viewer of all Pokémon TCG cards, using the
+        <a class="l-header__link" href="https://pokemontcg.io">pokemontcg.io</a>
+        API!
+      </p>
+      <div v-if="isHome" class="relative xl:px-16 mt-10 xl:px-0">
+        <input
+          v-model="name"
+          type="text"
+          placeholder="Search by name"
+          class="l-header__input"
+          @keyup.enter="searchName()"
+        />
         <button class="absolute" @click="searchName()">
           <font-awesome-icon :icon="['fas', 'search']" />
         </button>
       </div>
     </div>
     <transition name="bounce">
-      <button v-if="!hiddenFab" class="l-header__button absolute" @click="backToTop()">
-        <font-awesome-icon :icon="['fas', 'long-arrow-alt-up']"  />
+      <button
+        v-if="!hiddenFab"
+        class="l-header__button fixed xl:absolute"
+        @click="backToTop()"
+      >
+        <font-awesome-icon :icon="['fas', 'long-arrow-alt-up']" />
       </button>
     </transition>
   </header>
@@ -20,18 +55,19 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import { searchStore } from '~/store'
 
 @Component
 export default class TheHeaderComponent extends Vue {
   hiddenFab: boolean = true
   name: string = ''
 
-  mounted () {
-    window.addEventListener('scroll', this.handleScroll);
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll)
   }
 
-  destroyed () {
-    window.removeEventListener('scroll', this.handleScroll);
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 
   handleScroll() {
@@ -44,7 +80,11 @@ export default class TheHeaderComponent extends Vue {
   }
 
   searchName() {
-    console.log('query', this.name)
+    searchStore.updateQuery(this.name)
+  }
+
+  get isHome() {
+    return this.$route.path === '/' || this.$route.path === '/pt'
   }
 }
 </script>
@@ -53,15 +93,21 @@ export default class TheHeaderComponent extends Vue {
 .l-header {
   background-attachment: fixed;
   background-color: #554198;
-  background-image: url('/download.svg'), linear-gradient(to top right, #524ad0 10%, #a28dd0);
-  background-position: -50% 10%;
+  background-image: url('/download.svg'),
+    linear-gradient(to top right, #524ad0 10%, #a28dd0);
+  background-position: 25% 50%;
   background-repeat: repeat-y;
-  background-size: 75% auto;
-  box-sizing: border-box;
+  background-size: 40rem auto;
   color: #fff;
-  height: 100vh;
-  position: sticky;
-  top: 0;
+
+  @media screen and (min-width: #{map-get($breakpoints, 'xl')}) {
+    background-position: -50% 10%;
+    background-size: 75% auto;
+    box-sizing: border-box;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+  }
 
   &__title {
     font-family: $title-font;
@@ -89,7 +135,11 @@ export default class TheHeaderComponent extends Vue {
     border: 0;
     border-radius: 6px;
     padding: 12px;
-    width: 100%;
+    width: 93%;
+
+    @media screen and (min-width: #{map-get($breakpoints, 'xl')}) {
+      width: 100%;
+    }
   }
 
   &__input:focus {
@@ -99,13 +149,17 @@ export default class TheHeaderComponent extends Vue {
   &__input ~ button {
     background: none;
     border: 0;
-    bottom: -20px;
+    bottom: 0;
     color: #554198;
     cursor: pointer;
     font-size: 20px;
     outline: 0;
-    right: -10px;
-    top: 20px;
+    right: 10px;
+    top: 0;
+
+    @media screen and (min-width: #{map-get($breakpoints, 'xl')}) {
+      right: 60px;
+    }
   }
 
   &__button {
@@ -119,8 +173,12 @@ export default class TheHeaderComponent extends Vue {
     font-size: 20px;
     height: 50px;
     outline: none;
-    right: 25px;
+    right: 50px;
     width: 50px;
+
+    @media screen and (min-width: #{map-get($breakpoints, 'xl')}) {
+      right: 25px;
+    }
   }
 }
 

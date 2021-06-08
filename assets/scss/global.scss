@@ -130,8 +130,8 @@ $paddings: map.merge($paddings, $n-paddings);
 
 // FLEXBOX
 
-.flex {
-  display: flex;
+@include options(('flex': flex)) using ($value) {
+  display: $value;
 }
 
 @include options($justify-content) using ($value) {

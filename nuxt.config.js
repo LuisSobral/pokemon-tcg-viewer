@@ -1,7 +1,7 @@
 export default {
   // Global private environment variables: https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-runtime-config
   publicRuntimeConfig: {
-    apiKey: process.env.POKEMON_TCG_KEY || ''
+    apiKey: process.env.POKEMON_TCG_KEY || '',
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -15,8 +15,14 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap',
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap',
+      },
     ],
   },
 
@@ -49,15 +55,15 @@ export default {
     scss: [
       '~/assets/scss/_variables.scss',
       '~/assets/scss/_functions.scss',
-      '~/assets/scss/_mixins.scss'
-    ]
+      '~/assets/scss/_mixins.scss',
+    ],
   },
 
   // Font Awesome module configuration: https://github.com/nuxt-community/fontawesome-module
   fontawesome: {
     icons: {
-      solid: ['faSearch', 'faLongArrowAltUp']
-    }
+      solid: ['faSearch', 'faLongArrowAltUp'],
+    },
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -66,17 +72,42 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // Doc: https://i18n.nuxtjs.org
+    'nuxt-i18n',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://api.pokemontcg.io/v2/'
+    baseURL: 'https://api.pokemontcg.io/v2/',
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
       lang: 'en',
+    },
+  },
+
+  // i18n module configuration (https://i18n.nuxtjs.org/setup)
+  i18n: {
+    vuex: false,
+    defaultLocale: 'en',
+    vueI18nLoader: true,
+    detectBrowserLanguage: false,
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US',
+        name: 'English',
+      },
+      {
+        code: 'pt',
+        iso: 'pt-BR',
+        name: 'Português',
+      },
+    ],
+    vueI18n: {
+      fallbackLocale: 'en',
     },
   },
 

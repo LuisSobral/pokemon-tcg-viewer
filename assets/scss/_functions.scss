@@ -14,12 +14,12 @@
 
 // CREATE CLASSES FOR FLEX COLUMNS
 
-@function populatecolumns() {
-  $columns: ();
+@function populategrid($max) {
+  $grid: ();
 
-  @for $size from 1 through $flex-columns-length {
-    $columns: map.merge($columns, ($size: repeat($size, minmax(0, 1fr))));
+  @for $size from 1 through $max {
+    $grid: map.merge($grid, ($size: repeat($size, minmax(0, 1fr))));
   }
 
-  @return $columns;
+  @return $grid;
 }

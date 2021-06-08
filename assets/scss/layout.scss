@@ -10,10 +10,20 @@
   gap: 12px;
 }
 
-$grid-columns: populatecolumns();
+$grid-columns: populategrid($grid-columns-length);
+$grid-columns: map.merge($grid-columns, ('none': none));
 
 .grid-columns {
   @include options($grid-columns) using ($value) {
     grid-template-columns: $value;
+  }
+}
+
+$grid-rows: populategrid($grid-rows-length);
+$grid-rows: map.merge($grid-rows, ('none': none, 'auto': auto));
+
+.grid-rows {
+  @include options($grid-rows) using ($value) {
+    grid-template-rows: $value;
   }
 }
