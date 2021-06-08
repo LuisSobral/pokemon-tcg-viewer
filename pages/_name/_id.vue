@@ -10,7 +10,11 @@
     "
   >
     <div class="l-section__image md:flex md:mb-6">
-      <LinkButton class="l-section__link mb-4 md:mb-6" text="Go Back" :to="localePath('/')" />
+      <LinkButton
+        class="l-section__link mb-4 md:mb-6"
+        text="Go Back"
+        :to="localePath('/')"
+      />
       <img :src="card.images.large" :alt="card.name" />
     </div>
     <div class="px-6">

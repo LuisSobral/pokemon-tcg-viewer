@@ -40,9 +40,12 @@ To build your project, follow the instruction below:
 ```$ npm run build```
 ```$ npm run start```
 
-- Generate static project
+### Using a API Key
 
-```$ npm run generate```
+If you have a api key, follow the instructions below:
+
+- Create a ````.env```` file
+- Use the variable ````POKEMON_TCG_KEY````
 
 ## Built With
 

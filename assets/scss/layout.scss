@@ -2,8 +2,8 @@
 @use 'sass:list';
 @use 'sass:string';
 
-.grid {
-  display: grid;
+@include options(('grid': grid)) using ($value) {
+  display: $value;
 }
 
 .grid-gap {
